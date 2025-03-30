@@ -3,22 +3,24 @@ const input = document.getElementById('input');
 const lists = document.getElementById('lists')
 
 function addButton(e) {
-    let inputValue = input.value.trim();
-    if (inputValue === "") return;  
-    //  შევქმენი list -  დივი. 
+    let inputValue = input.value;
+ 
+    //  შევქმენი list -  დივი -  რათა შევქმნათ კონტეინერი ტექსტისთვის და აიცონებისთვის 
     let taskDiv = document.createElement('div');
     taskDiv.className = 'list';
 
     // შევქმნეი  პირველ  დივი ტექტისთვის 
     let textDiv = document.createElement('div');
     textDiv.className = 'texts';
-    // შევქმნათ p თეგი სადაც ტექტსში შევიტანთ
+    // შევქმნათ li  თეგი სადაც ტექტსში შევიტანთ
     let text =  document.createElement('li')
     text.className = 'text'
     text.textContent = inputValue;
+
     //  მეორე დივი აიქონებისთვის 
     let actionsDiv = document.createElement('div');
-    actionsDiv.className = 'icons';
+    actionsDiv.className = 'icons'; 
+
     //  შევქმნათ პირველი აიქონი
     let edit =   document.createElement('i');
     edit.className = 'bi bi-check-circle  edit';
@@ -27,12 +29,12 @@ function addButton(e) {
     deleteIcon.className = 'bi bi-x delete';
 
     //   ახალი დივები დავამატო list - დივში
-    taskDiv.appendChild(textDiv);
+    taskDiv.appendChild(textDiv);  
     taskDiv.appendChild(actionsDiv);
     textDiv.appendChild(text);
     actionsDiv.appendChild(edit)
     actionsDiv.appendChild(deleteIcon)
-    //  ყოველი თასქი ემატება - მთავარ lists.
+    
      
     function deleteTask(){
         taskDiv.remove()
@@ -58,9 +60,10 @@ function addButton(e) {
     }
 
     edit.addEventListener('click', checkTask);
- 
+
+  //  ყოველი თასქი ემატება - მთავარ lists.
     lists.appendChild(taskDiv);
-    input.value = '';
+    input.value = '';  // დამატების შემდგომ ასუფთავსებს ინფუთს. 
 }
 
 
