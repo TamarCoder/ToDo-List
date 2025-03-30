@@ -52,16 +52,13 @@ function addButton(e) {
 
     function checkTask (){
         text.style.textDecoration = 'line-through';
-        text.style.color = 'green'
+        text.style.color = 'green';
+
+         // აქ ბაგი მაქვს და ვერ  ვერ ვაგვარებ
     }
 
     edit.addEventListener('click', checkTask);
-
-
-
-
-
-
+ 
     lists.appendChild(taskDiv);
     input.value = '';
 }
