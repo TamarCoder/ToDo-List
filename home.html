@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,29 +8,70 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>To-Do List</title>
 </head>
+
 <body>
 
-
-
-    <div class="main-contianer">
-        <div class="container">
-            <div class="container-title">
-                <h1>To-Do List App</h1>
-            </div>
-            <div class="app" id="app">
-                <div class="input">
-                    <input type="text" name="input" id="input" class="input-input">
-                    <button type="button" id="add-btn">Add</button>
-                </div>
-                <div class="lists" id="lists"></div>
-            </div>
+    <section class="mainContainer">
+        <div class="title" id="title">
+            <i class="bi bi-rocket rocket"></i>
+            <p class="title-text">To-Do App</p>
         </div>
-    </div>
+        <div class="app-contianer">
+            <form action="form" class="form" id="form">
+                <input type="text" placeholder="რა დავალება დავამატო?" id="input">
+                <button id="add-button" type="button">
+                    დამატება
+                    <i class="bi bi-plus-lg plus"></i>
+                </button>
+            </form>
+
+            <div class="tasks-back">
+                <div class="tasks-count">
+                    <div class="taskCount">
+                        <p class="taskCount-text">დავალებები</p>
+                        <p id="taskCount-num">0</p>
+                    </div>
+                    <div class="taskEnd">
+                        <p class="taskEnd-text">დასრულებული</p>
+                        <p id="taskEnd-num">0</p>
+                    </div>
+                </div>
+                <div class="task-placeholder">
+                    <img src="./images/Clipboard.svg" alt="image">
+                    <span class="span">დავალებები ჯერ არ გაქვს</span>
+                    <div class="newTasks">
+                        <li class="task">
+                            <div class="unchek">
+                                <i class="bi bi-circle"></i>
+                            </div>
+                            <div class="taskText">
+                                <p>დავალება 1</p>
+                            </div>
+                            <div class="delete">
+                                <i class="bi bi-trash3-fill"></i>
+                            </div>
+                        </li>
+                            
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+ 
+
+        </div>
+
+    </section>
+
 
 
 
 
     <script src="script.js"></script>
-    
+
 </body>
+
 </html>
