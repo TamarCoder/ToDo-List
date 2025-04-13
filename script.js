@@ -15,6 +15,7 @@ function mainInput (event) {
             return;  
         }
         makeLists(input.value); 
+        countTask();  
         input.value = '';  // სუფთავდება ინფუთი
     }  
 }
@@ -123,7 +124,8 @@ function countTask() {
     
     for (let i = 0; i < tasks.length; i++) {
         const taskText = tasks[i].querySelector('.taskText');
-        if (!taskText.classList.contains('completed')) {    // თუ აღნიშულ ტექს არ ექნება ეს კლასი მაშნ ეს დავალება აქტიურია და დავალებები უნდა დაითვალოს 
+        if (!taskText.classList.contains('completed')) {    
+            // თუ აღნიშულ ტექს არ ექნება ეს კლასი მაშნ ეს დავალება აქტიურია და დავალებები უნდა დაითვალოს 
             count++;
         }
     }
@@ -139,7 +141,8 @@ function endTaskCounter(){
 
     for (let i = 0; i < endTasks.length; i++) {
         const taskText = endTasks[i].querySelector('.taskText');
-        if (taskText.classList.contains('completed')) {  // თუ ტექსი ამ კლას შეიცვას ესეიგი თავალება შესრულებულა და უნდა გადავიტანთ დასრულებულში 
+        if (taskText.classList.contains('completed')) {  
+            // თუ ტექსი ამ კლას შეიცვას ესეიგი თავალება შესრულებულა და უნდა გადავიტანთ დასრულებულში 
             endTaskCounter++;
         }
     }
