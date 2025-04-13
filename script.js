@@ -3,17 +3,23 @@ const input = document.getElementById('input');
 const addBtn =  document.getElementById('add-button');
 const newTasks =  document.querySelector('.newTasks');
 const placeholderImg = document.getElementById('placeholder-img');
-const spna =  document.querySelector('.span')
-
+const spna =  document.querySelector('.span'); 
+ 
 
 // შევქმნათ ფუნქცია, რომელიც ამოიღებს შეტანილ ინფორმაციას. 
 function mainInput (event) {
     if(event.key === 'Enter'){
+       // თუ ინფუთზე უბრალოდ ხელს დავაწვეები და ცარიელი იქნება ამ მეჯის გამოიტანს
+        if(input.value.trim() === ""){
+            alert("გთხოვ შეიყვანე დავალება ✍️");
+            return;  
+        }
         makeLists(input.value); 
         removeplaceholder(input.value)
-        input.value = "";  // სუფთავდება ინფუთი
-    }
-};
+        input.value = '';  // სუფთავდება ინფუთი
+    }  
+}
+
 // იმის გამო რომ მე არ მაქვს ბექენდი , 
 // უნდა გავაკეთო ფნქცია რომელიც ამ ყველაფრს სერვერზე არ გაუშვებს
 function dontSentServer(event) {
@@ -21,8 +27,14 @@ function dontSentServer(event) {
 };
 // ეს ფუნქცია უშუალოდ მუშაობს მაშინ როცა ბათნს აწვება მომხმარებელი
 function addButton (event){
+    if(input.value.trim() === ""){
+        alert("გთხოვ შეიყვანე დავალება ✍️");
+        return;  
+    }
     makeLists(input.value); 
     removeplaceholder(input.value)
+    countTask();
+    
     input.value = "";   // სუფთავდება ინფუთი
 }
 // ფუნცია სადაც ვქმნი Task კლას.
@@ -55,6 +67,7 @@ function changeIcon (event) {
         icon.classList.remove('bi-circle');
         icon.classList.add('bi-check-circle-fill');  // შეცვლის აიკონს
         icon.style.color = 'green'
+       
     } else {
         icon.classList.remove('bi-check-circle-fill');
         icon.classList.add('bi-circle');  // უკან დააბრუნებს
@@ -71,22 +84,45 @@ function textDecoration(element) {
         element.style.textDecoration = 'line-through';
         element.style.color = 'green';
     }
+
+    endTaskCount()
 }
 // თასქის წაშლის ფუქცია.
 function removeTask(taskItem) {
-    if(taskItem.remove()){
-        placeholderImg.add();
-        spna.add()
+    taskItem.remove()
+    alert('ნამდვილად გსურთ დავალების წაშლა?');
+    countTask();
+    
+    if (makeLists) {
+        placeholderImg.style.display = 'block';  // placeholderImg ვაჩვენოთ
+        spna.style.display = 'block';  // spna ვაჩვენოთ
     }
+   
+
 }
 // როცა  თასქი დამეტება წაიშლაშო უკანა ფონი
 function removeplaceholder() {
-     if(makeLists) {
-        placeholderImg.remove();
-        spna.remove();
-     }  
+    if (makeLists) {
+        placeholderImg.style.display = 'none';   
+        spna.style.display = 'none';   
+    }
 
 }
+// დავალების თვლის ფუნქცია
+function countTask() {
+    const tasks = document.querySelectorAll('.task');  // ვიპოვე ყველა task ელემენტი
+    const taskCountDisplay = document.getElementById('taskCount-num'); // მივწვდი ცვლად სადაც დათვლილი დავალებები აისახება 
+    
+    let count = 0;  //ვიწყებ დათვლას 0 დან 
+    
+    // ციკლი ყველა 'task' ელემენტზე
+    for (let i = 0; i < tasks.length; i++) {
+        count++;  // ყოველ  იტერაციაზე ემატება ერთი 
+    }
+    
+    taskCountDisplay.textContent = count;  
+}
+
 
 // ფორმ ლისენერი უსმენ კლავიშზე დაწერას და 
 // უშვებ ფუნქციას რომელიც ამ ინფოს არ გაუშვებს სერვერსზ
