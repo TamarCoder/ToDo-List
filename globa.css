@@ -8,9 +8,12 @@
 
 
 body {
-    background-color: rgba(13, 13, 13, 1);
+    background-color: rgb(226, 226, 226);
     font-family: "Inter", sans-serif;
     font-style: normal;
+    background-image: url('./images/iPad\ Mini\ 6\ Wallpaper.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .mainContainer{
     width: 100%;
@@ -43,7 +46,7 @@ body {
 .app-contianer{
     width: 100%;
     height: 100vh;
-    background-color: #1a1a1a;
+ 
     position: relative;
     display: flex;
     flex-direction: column;
@@ -63,7 +66,7 @@ body {
 #input{
     width: 700px;
     height: 40px;
-    background-color: #262626;
+    background: radial-gradient(circle,rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
     border: none;
 }
 #input::placeholder{
@@ -73,7 +76,7 @@ body {
 #add-button{
     width: 120px;
     height: 40px;
-    background-color: #1f6f9f;
+    background-color: #1f9f2e;
     border: none;
     color: rgb(255, 255, 255);
     font-size: 16px;
@@ -105,17 +108,18 @@ body {
 }
 
 .taskCount-text{
-    color:  #1f6f9f;
+    color:  #ffffff;
     font-size: 15px;
 }
 #taskCount-num{
     width: 20px;
     height: 20px;
-    background-color: #333333 ;
+    background: radial-gradient(circle,rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50px;
+   
 }
 .taskEnd{
     width: 150px;
@@ -128,14 +132,14 @@ body {
 #taskEnd-num{
     width: 20px;
     height: 20px;
-    background-color: #333333 ;
+    background: radial-gradient(circle,rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50px;
 }
 .taskEnd-text{
-    color:  #5e60ce;
+    color:  #ffffff;
     font-size: 15px;
 }
 
@@ -157,19 +161,44 @@ body {
 .newTasks{
     width: 735px;
     height: 266px;
-    background-color: #1a1a1a;
+    overflow: hidden;
+    overflow-y: scroll;
     position: absolute;
     display: flex;
     flex-direction: column;
+    gap: 8px;
 }
 .task{
     width: 735px;
     height: 50px;
-    background-color: rgba(38, 38, 38, 1);
+    background: radial-gradient(circle,rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
     border-radius: 8px;
     border-bottom: 1px solid rgba(51, 51, 51, 1) ;
     list-style: none;
     display: flex;
     align-items: center; 
 }
+.unchek{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+}
  
+.taskText{
+    width: 650px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.delete{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
