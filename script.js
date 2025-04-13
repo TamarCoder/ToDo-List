@@ -15,7 +15,6 @@ function mainInput (event) {
             return;  
         }
         makeLists(input.value); 
-        removeplaceholder(input.value)
         input.value = '';  // სუფთავდება ინფუთი
     }  
 }
@@ -32,9 +31,8 @@ function addButton (event){
         return;  
     }
     makeLists(input.value); 
-    removeplaceholder(input.value)
     countTask();
-    
+    removeplaceholder(); 
     input.value = "";   // სუფთავდება ინფუთი
 }
 // ფუნცია სადაც ვქმნი Task კლას.
@@ -59,6 +57,8 @@ function makeLists (event){
     div.addEventListener('click', () => changeIcon(div));
     div.addEventListener('click', () => textDecoration(text))
     deleteIcon.addEventListener('click', () => removeTask(li))
+
+    removeplaceholder() 
 }
  // ფუნცია რომელიც ცვლის აიკონს როცა თასქი შესრულება, ამ ფუნქციის მომსმენს გამოვიძაებ თასქ ფუნქციაში
 function changeIcon (event) {
@@ -84,28 +84,27 @@ function textDecoration(element) {
         element.style.textDecoration = 'line-through';
         element.style.color = 'green';
     }
-
-    endTaskCount()
 }
 // თასქის წაშლის ფუქცია.
 function removeTask(taskItem) {
-    taskItem.remove()
-    alert('ნამდვილად გსურთ დავალების წაშლა?');
-    countTask();
-    
-    if (makeLists) {
-        placeholderImg.style.display = 'block';  // placeholderImg ვაჩვენოთ
-        spna.style.display = 'block';  // spna ვაჩვენოთ
+    const isConfirme = confirm('ნამდვილად გსურთ დავალების წაშლა?');
+    if(isConfirme) {
+        taskItem.remove();
+        countTask();
+    }else {
+        console.log('დავალება არ წაიშალა.');
     }
-   
-
+    removeplaceholder() 
 }
 // როცა  თასქი დამეტება წაიშლაშო უკანა ფონი
 function removeplaceholder() {
-    if (makeLists) {
-        placeholderImg.style.display = 'none';   
-        spna.style.display = 'none';   
-    }
+    if (document.querySelectorAll('.task').length === 0) {
+        placeholderImg.style.display = 'block';
+        spna.style.display = 'block';
+     } else {
+        placeholderImg.style.display = 'none';
+        spna.style.display = 'none';
+     }
 
 }
 // დავალების თვლის ფუნქცია
